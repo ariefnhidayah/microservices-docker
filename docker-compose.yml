@@ -1,0 +1,38 @@
+version: "3.3"
+services: 
+    order:
+        build: "order-service"
+        # image: "ariefnhidayah/order-service:1.0"
+        environment: 
+            POSTGRES_HOST: "postgres"
+            POSTGRES_DB: "orders"
+            POSTGRES_USER: "docker"
+            POSTGRES_PASSWORD: "docker"
+            BOOK_SERVICE_HOST: "book:8080"
+        ports: 
+            - "80:8081"
+        depends_on: 
+            - postgres
+            - book
+    book:
+        build: "book-service"
+        environment: 
+            POSTGRES_HOST: "postgres"
+            POSTGRES_DB: "books"
+            POSTGRES_USER: "docker"
+            POSTGRES_PASSWORD: "docker"
+        ports: 
+            - "8080:8080"
+        depends_on: 
+            - postgres
+    postgres:
+        image: "postgres:13-alpine"
+        environment: 
+            POSTGRES_DB: "books"
+            POSTGRES_USER: "docker"
+            POSTGRES_PASSWORD: "docker"
+        expose: 
+            - "5432"
+        ports: 
+            - "5432:5432"
+        restart: "always"
