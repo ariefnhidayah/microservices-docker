@@ -1,5 +1,9 @@
 version: "3.3"
 services: 
+    podinfo:
+        image: "stefanprodan/podinfo"
+        ports: 
+            - "8082:9898"
     order:
         build: "order-service"
         # image: "ariefnhidayah/order-service:1.0"
