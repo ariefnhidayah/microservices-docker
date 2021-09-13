@@ -16,6 +16,7 @@ services:
         depends_on: 
             - book
             - order
+        restart: "always"
     order:
         build: "order-service"
         # image: "ariefnhidayah/order-service:1.0"
@@ -30,6 +31,7 @@ services:
         depends_on: 
             - postgres
             - book
+        restart: "always"
     book:
         build: "book-service"
         environment: 
@@ -41,6 +43,7 @@ services:
         #     - "8080:8080"
         depends_on: 
             - postgres
+        restart: "always"
     postgres:
         image: "postgres:13-alpine"
         environment: 
