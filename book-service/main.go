@@ -264,6 +264,12 @@ func (h *handler) GetBook(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
+	fmt.Println(book.ID)
+	if book.ID == 0 {
+		response := gin.H{"status": "error", "message": "Book not found!"}
+		c.JSON(http.StatusNotFound, response)
+		return
+	}
 
 	response := gin.H{"status": "success", "data": FormatBook(book)}
 	c.JSON(http.StatusOK, response)
