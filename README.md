@@ -19,3 +19,6 @@ If you already clone this repo and install docker, you can use this command for 
 ```
 docker-compose up -d
 ```
+
+And if you failed for running docker compose, you must install docker compose in your pc. You can see this link for the installation \
+[Docker Compose](https://docs.docker.com/compose/install/)
